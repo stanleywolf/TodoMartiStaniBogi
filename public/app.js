@@ -1,59 +1,36 @@
 (function() {
   'use strict';
-  // TODO optimise task removal by useing object {} for storing the tasks
-  // TODO optimise html task removal by passing target and removing it from parent
-  // TODO optimise toggling done --||--
 
-  let index;
-  let tasks;
-  let r = new Requester()
   let inputField = document.querySelector('input[type="text"]');
   let submitButton = document.querySelector('button[type="submit"]');
-  let todoList = document.querySelector('ul.tasks');
 
   init();
 
   function addTask(name) {
-    apiCreateTodo(name)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        renderTask(data.result.todo);
-      })
+    let todo = new Todo()
+    todo.add(name)
   }
 
   function removeTask(id) {
-    apiDeleteTodo(id)
-      .then(data => {
-        let element = document.querySelector('.task[data-task-id="' + id + '"]');
-        element.parentElement.removeChild(element);
-      })
-  }
-
-  function renderTask(todo) {
-    let html = Handlebars.templates.task(todo);
-    todoList.innerHTML = html + todoList.innerHTML;
+    let todo = todosList.filter(todo => todo.id == id)[0]
+    todo.remove()
   }
 
   function toggleTaskDone(id) {
-    apiCheckTodo(id)
-      .then(() => {
-        let element = document.querySelector('.task[data-task-id="' + id + '"]');
-        element.classList.toggle('done');
-      })
-  }
+    let todo = todosList.filter(todo => todo.id == id)[0]
+    todo.complete()
 
-  window.init = init
+  }
 
   function init() {
     apiFetchTodos()
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         data = data || {};
         let todos = data.todos || [];
         todos.forEach(function(todo) {
-          renderTask(todo);
+          let todoObj = new Todo(todo)
+          todoObj.render()
         })
       })
   }
@@ -83,29 +60,4 @@
       return;
     }
   })
-
-  async function apiFetchTodos() {
-    return await r.GET('/todo/all')
-  }
-
-  async function apiFetchTodo(id) {
-    return await r.GET('/todo/' + id)
-  }
-
-  async function apiCreateTodo(name) {
-    return await r.POST('/todo/add', {text: name})
-  }
-
-  async function apiDeleteTodo(id) {
-    return await r.DELETE('/todo/' + id)
-  }
-
-  async function apiUpdateTodo(id, text) {
-    return await r.PUT('/todo/' + id + '/text/' + text )
-  }
-
-  async function apiCheckTodo(id) {
-    return await r.PUT('/todo/' + id + '/check')
-  }
-
 }());

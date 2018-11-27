@@ -35,3 +35,5 @@ async function request(method, url, data) {
 
   return response
 }
+
+let r = new Requester()
