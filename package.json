@@ -1,0 +1,22 @@
+{
+  "name": "ex-server",
+  "version": "1.0.0",
+  "description": "Excercise - sample server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon dist/app.js",
+    "watch-app": "node_modules/.bin/babel src -d dist --watch"
+  },
+  "author": "B.Blagoev",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "nodemon": "^1.18.7"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6"
+  }
+}

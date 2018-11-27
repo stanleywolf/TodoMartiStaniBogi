@@ -1,0 +1,95 @@
+.container {
+  position: relative;
+  width: 600px;
+  padding: 20px;
+  margin: 0 auto;
+}
+.container input {
+  width: 80%;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border: 1px solid #E0E0E0;
+  border-right: none;
+  border-top-right-radius: unset;
+  border-bottom-right-radius: unset;
+}
+.container button[type=submit] {
+  width: 20%;
+  box-sizing: border-box;
+  position: absolute;
+  padding: 5px 10px;
+  right: 20px;
+  top: 20px;
+  background: #5DA2E3;
+  color: #ffffff;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border: 1px solid #E0E0E0;
+  border-left: none;
+  border-top-left-radius: unset;
+  border-bottom-left-radius: unset;
+}
+.container ul.tasks {
+  position: relative;
+  padding: 0;
+  list-style: none;
+}
+.container ul.tasks .task.done {
+  box-shadow: -5px 0 green;
+}
+.container ul.tasks .task.done .btn-done {
+  transform: translateY(5px) !important;
+  box-shadow: 0 0;
+  transition: all 100ms ease-in-out;
+}
+.container ul.tasks .task {
+  border-bottom: 1px solid #E0E0E0;
+  padding: 20px;
+  position: relative;
+}
+.container ul.tasks .task__title {
+  width: 75%;
+  text-overflow: ellipsis;
+  background-color: white;
+  overflow: hidden;
+}
+.container ul.tasks .task__date {
+  display: block;
+}
+.container ul.tasks .btn-wrapper {
+  position: absolute;
+  top: 30px;
+  right: 0;
+}
+.container ul.tasks .btn-wrapper .btn {
+  display: inline-block;
+  box-sizing: border-box;
+  background: #5DA2E3;
+  width: 60px;
+  margin-top: 0px;
+  color: #ffffff;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border: unset;
+}
+.container ul.tasks .btn-wrapper .btn:active {
+  transform: translateY(5px);
+  box-shadow: 0 0;
+  transition: all 100ms ease-in-out;
+}
+.container ul.tasks .btn-wrapper .btn-done {
+  background-color: #4CAF50;
+  box-shadow: 0 5px #3d8b40;
+  margin-right: 3px;
+}
+.container ul.tasks .btn-wrapper .btn-remove {
+  background-color: #DD1144;
+  box-shadow: 0 5px #ae0d35;
+}
+
+/*# sourceMappingURL=style.css.map */
